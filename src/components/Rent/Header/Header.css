@@ -1,0 +1,16 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.header-right {
+    width: 12rem;
+    height: 1rem;
+    border: 1px solid #eee !important;
+    border-radius:0.5rem;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+}

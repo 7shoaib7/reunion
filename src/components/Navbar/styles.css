@@ -32,10 +32,16 @@
 .navbar-text-onclick {
     background-color:gainsboro;
     border-radius: 0.5rem;
-    color:blueviolet;
+    color:blueviolet !important;
     font-weight: 500;
 }
 
+
+.navbar-dropdown{
+    display: flex;
+    align-items: center;
+    gap:4rem;
+}
 
 .navbar-cta {
     margin-right: 4rem;
@@ -49,4 +55,8 @@
 
 .signup {
     background-color: darkslateblue !important;
+}
+
+.link{
+    text-decoration: none;
 }
