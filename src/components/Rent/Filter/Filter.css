@@ -20,10 +20,10 @@
 }
 
 .width{
-    width: 9rem;
+    width: 12rem;
 }
 
-.location-name {
+.filter-name {
     margin: 0;
     font-size: 1rem;
     font-weight: 400;
@@ -33,6 +33,16 @@
 
 .border{
     border-right: 1px solid #ccc;
+}
+
+.selection{
+    width: 90%;
+    height:2rem;
+}
+
+.select-container{
+    height:100%;
+    width: 100%;
 }
 
 .search-btn {
@@ -45,4 +55,6 @@
     border-radius: 0.5rem;
     width:6rem;
 }
+
+
 
