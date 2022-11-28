@@ -1,0 +1,52 @@
+.navbar {
+    width: 100%;
+    height: 5rem;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+    overflow: none;
+    border-bottom: 0.5px solid #eee;
+}
+
+.navbar-content-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:4rem;
+    height: 2rem;
+}
+
+.navbar-content {
+    margin-left: 4rem;
+    display: flex;
+    gap: 4rem;
+}
+
+.navbar-text-content:hover {
+    color: blueviolet;
+    cursor: pointer;
+}
+
+.navbar-text-onclick {
+    background-color:gainsboro;
+    border-radius: 0.5rem;
+    color:blueviolet;
+    font-weight: 500;
+}
+
+
+.navbar-cta {
+    margin-right: 4rem;
+    gap: 1rem;
+}
+
+.login {
+    color: blueviolet !important;
+    border: 1px solid #eee !important;
+}
+
+.signup {
+    background-color: darkslateblue !important;
+}
