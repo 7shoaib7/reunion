@@ -1,0 +1,152 @@
+
+.card {
+    position: relative;
+    width: 18rem;
+    height: 22rem;
+    background: #fff;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.card .card-ribbon {
+    position: absolute;
+    top: 141px;
+    left: -15px;
+    width: 33%;
+    height: 27px;
+    background: mediumslateblue;
+    border-radius: 30px;
+    border-bottom-left-radius: 0;
+}
+
+.card .card-ribbon::before {
+    content: "";
+    position: absolute;
+    top: 27px;
+    width: 15px;
+    height: 24px;
+    background: darkslateblue;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    z-index: 2;
+}
+
+.card .card-ribbon::after {
+    content: "";
+    position: absolute;
+    top: 26px;
+    width: 15px;
+    height: 15px;
+    background: mediumslateblue;
+    z-index: 1;
+}
+
+.span-content {
+    position: absolute;
+    top: 8.5rem;
+    left: 1rem;
+    color: #fff;
+    font-size: 0.7rem;
+}
+
+
+.card-img {
+    height: 10rem;
+    width: 100%;
+}
+
+.card-img img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+
+.card-content {
+    margin-top: 1rem;
+    padding: 1rem;
+}
+
+.card-top-content {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+}
+
+.card-price-address {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.card-bottom-content {
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.price {
+    color: mediumslateblue;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.per-month {
+    color: #495057;
+    position: relative;
+    bottom: 0.2rem;
+    font-size: .8rem;
+}
+
+.city {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.address {
+    color: #495057;
+    font-size: 0.8rem;
+}
+
+.divider {
+    margin-top: 1rem;
+}
+
+.card-favourite {
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    border: 1px solid #cee;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bottom-flex {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+.icon {
+    font-size: medium;
+    color: mediumslateblue
+}
+
+.icon-text {
+    color: #495057;
+    font-size: 0.7rem;
+}
+
+.area-square {
+    position: relative;
+    font-size: 0.5rem;
+    right: 0.2rem;
+    bottom: 0.1rem;
+}

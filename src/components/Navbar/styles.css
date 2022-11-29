@@ -8,6 +8,9 @@
     padding: 0.5rem;
     overflow: none;
     border-bottom: 0.5px solid #eee;
+    position:sticky;
+    top:0;
+    z-index: 90;
 }
 
 .navbar-content-box {
@@ -54,7 +57,7 @@
 }
 
 .signup {
-    background-color: darkslateblue !important;
+    background-color: mediumslateblue !important;
 }
 
 .link{

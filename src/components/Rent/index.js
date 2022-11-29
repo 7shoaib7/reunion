@@ -8,6 +8,7 @@ const Rent = () => {
     <div className="container">
         <Header/>
         <Filter/>
+        
     </div>
   )
 }

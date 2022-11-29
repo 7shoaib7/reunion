@@ -21,7 +21,7 @@ html, body, #root {
   font-family: "Roboto"
 }
 @media(max-width:767px) {
- #root{
+ html,body,#root{
     width:fit-content
   }
 }

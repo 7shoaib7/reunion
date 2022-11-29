@@ -19,7 +19,7 @@
     margin-left: 2rem;
 }
 
-.width{
+.width {
     width: 12rem;
 }
 
@@ -31,30 +31,45 @@
     color: #495057;
 }
 
-.border{
+.border {
     border-right: 1px solid #ccc;
 }
 
-.selection{
+.selection {
     width: 90%;
-    height:2rem;
+    height: 2rem;
 }
 
-.select-container{
-    height:100%;
+.select-container {
+    height: 100%;
+    width: 100%;
+}
+
+.select-date-container {
     width: 100%;
 }
 
 .search-btn {
     margin-right: 2rem;
-    border:none;
+    border: none;
 }
-.search{
-    background-color: darkslateblue !important;
-    height:3rem;
+
+.search {
+    background-color: mediumslateblue !important;
+    height: 3rem;
     border-radius: 0.5rem;
-    width:6rem;
+    width: 6rem;
+
+}
+
+.css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root {
+    height: 2rem;
 }
 
 
+.filter-grid {
+    margin-top: 2rem;
+    height: auto;
+    width: 100%;
+}
 
