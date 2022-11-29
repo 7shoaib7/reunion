@@ -18,8 +18,10 @@ const Filter = () => {
     const [price, setPrice] = useState(null);
     const [propertyType, setPropertyType] = useState(null);
     const [date, setDate] = useState(dayjs('2014-08-18T21:11:54'));
-    const [data, setData] = useState(dummy)
+    const [data, setData] = useState(dummy);
 
+
+ 
     const handleDateChange = (newValue) => {
         setDate(newValue);
         console.log(newValue.$d);
@@ -51,7 +53,7 @@ const Filter = () => {
         if (price !== null) {
             const rate1 = price.split("-")[0];
             const rate2 = price.split("-")[1];
-            return data.filter(item => item.price >= rate1 && item.price <= rate2)
+            return data.filter(item => item.price >= rate1 && item.price <= rate2);
         }
         return data
     }
@@ -67,11 +69,11 @@ const Filter = () => {
 
     const handleFilter = () => {
         const byLocation = filterByLocation();
-        console.log(byLocation)
+        console.log("ByLocation",byLocation)
         const byPrice = filterByPrice(byLocation);
-        console.log(byPrice)
+        console.log("ByPrice",byPrice)
         const byProperty = filterByProperty(byPrice)
-        console.log(byProperty)
+        console.log("ByProperty",byProperty)
         setData(byProperty)
     }
 
@@ -89,7 +91,7 @@ const Filter = () => {
                             displayEmpty
                         >
 
-                            <MenuItem value={null}><em>Clear</em></MenuItem>
+                            <MenuItem value={null}><em>Select Location</em></MenuItem>
                             <MenuItem value="India">India</MenuItem>
                             <MenuItem value="USA">USA</MenuItem>
                             <MenuItem value="China">China</MenuItem>
@@ -120,7 +122,7 @@ const Filter = () => {
                             displayEmpty
                         >
 
-                            <MenuItem value={null}><em>Clear</em></MenuItem>
+                            <MenuItem value={null}><em>Select Price</em></MenuItem>
                             <MenuItem value="500-2500">$500-2500</MenuItem>
                             <MenuItem value="2501-4500">$2500-4500</MenuItem>
                             <MenuItem value="4501-7000">$4500-7000</MenuItem>
@@ -136,14 +138,14 @@ const Filter = () => {
                             className="select-container"
                             displayEmpty
                         >
-                            <MenuItem value={null}><em>Clear</em></MenuItem>
+                            <MenuItem value={null}><em>Select Property</em></MenuItem>
                             <MenuItem value="Houses">Houses</MenuItem>
                             <MenuItem value="Luxury">Luxury</MenuItem>
                             <MenuItem value="Apartment">Apartment</MenuItem>
                         </Select>
                     </div>
                 </div>
-                <div className="search-btn flex border width">
+                <div className="search-btn flex-row border width">
                     <Button size="small" variant="contained" className="search" onClick={handleFilter}>Search</Button>
                 </div>
             </div>

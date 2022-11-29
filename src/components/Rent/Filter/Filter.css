@@ -49,6 +49,12 @@
     width: 100%;
 }
 
+.flex-row{
+    display: flex;
+    gap:1rem;
+    justify-content: center;
+}
+
 .search-btn {
     margin-right: 2rem;
     border: none;
