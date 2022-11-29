@@ -21,7 +21,7 @@ const Filter = () => {
     const [data, setData] = useState(dummy);
 
 
- 
+
     const handleDateChange = (newValue) => {
         setDate(newValue);
         console.log(newValue.$d);
@@ -53,7 +53,7 @@ const Filter = () => {
         if (price !== null) {
             const rate1 = price.split("-")[0];
             const rate2 = price.split("-")[1];
-            return data.filter(item => item.price >= rate1 && item.price <= rate2);
+            return data.filter(item=>item.price<=rate2 && item.price>=rate1)
         }
         return data
     }
@@ -69,11 +69,11 @@ const Filter = () => {
 
     const handleFilter = () => {
         const byLocation = filterByLocation();
-        console.log("ByLocation",byLocation)
+        console.log("ByLocation", byLocation)
         const byPrice = filterByPrice(byLocation);
-        console.log("ByPrice",byPrice)
+        console.log("ByPrice", byPrice)
         const byProperty = filterByProperty(byPrice)
-        console.log("ByProperty",byProperty)
+        console.log("ByProperty", byProperty)
         setData(byProperty)
     }
 
@@ -101,13 +101,12 @@ const Filter = () => {
                 <div className="date flex border width">
                     <p className="filter-name ">When</p>
                     <div className="selection">
-                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <LocalizationProvider dateAdapter={AdapterDayjs} style={{height:"2rem"}}>
                             <DesktopDatePicker
                                 inputFormat="MM/DD/YYYY"
                                 value={date}
                                 onChange={handleDateChange}
                                 renderInput={(params) => <TextField {...params} />}
-                                className="select-date-container"
                             />
                         </LocalizationProvider>
                     </div>
@@ -123,7 +122,7 @@ const Filter = () => {
                         >
 
                             <MenuItem value={null}><em>Select Price</em></MenuItem>
-                            <MenuItem value="500-2500">$500-2500</MenuItem>
+                            {/* <MenuItem value="500-2500">$500-2500</MenuItem> */}
                             <MenuItem value="2501-4500">$2500-4500</MenuItem>
                             <MenuItem value="4501-7000">$4500-7000</MenuItem>
                         </Select>
@@ -159,7 +158,7 @@ const Filter = () => {
                         </Grid>
                     ))}
                 </Grid>
-                    : (<div  className="not-found">
+                    : (<div className="not-found">
                         <h1>No results found😔</h1>
                     </div>
                     )}
