@@ -37,7 +37,7 @@
 
 .selection {
     width: 90%;
-    height: 2rem;
+    height: 2rem ;
 }
 
 .select-container {
@@ -67,11 +67,6 @@
     width: 6rem;
 
 }
-
-.css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root {
-    height: 2rem !important;
-}
-
 
 .filter-grid {
     margin-top: 2rem;

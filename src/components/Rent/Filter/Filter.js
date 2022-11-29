@@ -11,9 +11,11 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import Card from "../Card/Card";
 import Grid from '@mui/material/Grid';
-import dummy from "../../../data/dummy.json"
+import dummy from "../../../data/dummy.json";
+import { SxProps } from "@mui/system"
 
 const Filter = () => {
+
     const [location, setLocation] = useState(null);
     const [price, setPrice] = useState(null);
     const [propertyType, setPropertyType] = useState(null);
@@ -53,7 +55,7 @@ const Filter = () => {
         if (price !== null) {
             const rate1 = price.split("-")[0];
             const rate2 = price.split("-")[1];
-            return data.filter(item=>item.price<=rate2 && item.price>=rate1)
+            return data.filter(item => item.price <= rate2 && item.price >= rate1)
         }
         return data
     }
@@ -101,14 +103,16 @@ const Filter = () => {
                 <div className="date flex border width">
                     <p className="filter-name ">When</p>
                     <div className="selection">
-                        <LocalizationProvider dateAdapter={AdapterDayjs} style={{height:"2rem"}}>
+                        <LocalizationProvider dateAdapter={AdapterDayjs} style={{ height: "2rem" }}>
                             <DesktopDatePicker
                                 inputFormat="MM/DD/YYYY"
                                 value={date}
                                 onChange={handleDateChange}
-                                renderInput={(params) => <TextField {...params} />}
+                                renderInput={(params) => <TextField sx={{ "& .MuiInputBase-input": { height: "1px" } }}  {...params} />}
+                                InputProps={{ sx: { "& .MuiSvgIcon-root": { color: "mediumslateblue" } } }}
                             />
                         </LocalizationProvider>
+
                     </div>
                 </div>
                 <div className="price flex border width">
