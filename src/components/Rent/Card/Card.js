@@ -1,12 +1,14 @@
-import React from 'react'
+import React,{useState} from 'react'
 import "./Card.css";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import BedIcon from '@mui/icons-material/Bed';
 import BathtubIcon from '@mui/icons-material/Bathtub';
 import LivingIcon from '@mui/icons-material/Living';
 
 
 const Card = ({item}) => {
+    const [favorite,setFavorite] =useState(false)
     return (
         <div className="card">
             <span className="card-ribbon"></span>
@@ -25,8 +27,8 @@ const Card = ({item}) => {
                             <span className="city">{item.city}</span>
                         </div>
                     </div>
-                    <div className="card-favourite">
-                        <FavoriteBorderIcon fontSize="small" style={{ color: "mediumslateblue" }} />
+                    <div className="card-favourite" onClick={()=>setFavorite(!favorite)}>
+                      {!favorite ? <FavoriteBorderIcon fontSize="small" style={{ color: "mediumslateblue" }} /> : <FavoriteIcon fontSize="small" style={{ color: "mediumslateblue" }}/>}  
                     </div>
                 </div>
                 <span className="address">{item.address}</span>
