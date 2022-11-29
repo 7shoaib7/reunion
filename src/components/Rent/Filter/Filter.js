@@ -11,91 +11,12 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import Card from "../Card/Card";
 import Grid from '@mui/material/Grid';
-
-const dummy = [
-    {
-        "location": "India",
-        "price": "2508",
-        "property-type": "Houses",
-        "img": "http://4.bp.blogspot.com/-vO0XXtoTrqQ/UZZEw26zzmI/AAAAAAAAAsY/tUt0TedjTEk/s1600/1.png",
-        "city": "Palm Harbor",
-        "address": "2699 Green Valley, Highland Lake,Fl",
-        "beds": "3",
-        "bathrooms": "2",
-        "area": "5x7"
-    },
-    {
-        "location": "India",
-        "price": "2508",
-        "property-type": "Houses",
-        "img": "http://4.bp.blogspot.com/-vO0XXtoTrqQ/UZZEw26zzmI/AAAAAAAAAsY/tUt0TedjTEk/s1600/1.png",
-        "city": "Palm Harbor",
-        "address": "2699 Green Valley, Highland Lake,Fl",
-        "beds": "3",
-        "bathrooms": "2",
-        "area": "5x7"
-    },
-    {
-        "location": "India",
-        "price": "2508",
-        "property-type": "Houses",
-        "img": "http://4.bp.blogspot.com/-vO0XXtoTrqQ/UZZEw26zzmI/AAAAAAAAAsY/tUt0TedjTEk/s1600/1.png",
-        "city": "Palm Harbor",
-        "address": "2699 Green Valley, Highland Lake,Fl",
-        "beds": "3",
-        "bathrooms": "2",
-        "area": "5x7"
-    },
-    {
-        "location": "India",
-        "price": "2508",
-        "property-type": "Houses",
-        "img": "http://4.bp.blogspot.com/-vO0XXtoTrqQ/UZZEw26zzmI/AAAAAAAAAsY/tUt0TedjTEk/s1600/1.png",
-        "city": "Palm Harbor",
-        "address": "2699 Green Valley, Highland Lake,Fl",
-        "beds": "3",
-        "bathrooms": "2",
-        "area": "5x7"
-    },
-    {
-        "location": "India",
-        "price": "2508",
-        "property-type": "Houses",
-        "img": "http://4.bp.blogspot.com/-vO0XXtoTrqQ/UZZEw26zzmI/AAAAAAAAAsY/tUt0TedjTEk/s1600/1.png",
-        "city": "Palm Harbor",
-        "address": "2699 Green Valley, Highland Lake,Fl",
-        "beds": "3",
-        "bathrooms": "2",
-        "area": "5x7"
-    },
-    {
-        "location": "India",
-        "price": "2508",
-        "property-type": "Houses",
-        "img": "http://4.bp.blogspot.com/-vO0XXtoTrqQ/UZZEw26zzmI/AAAAAAAAAsY/tUt0TedjTEk/s1600/1.png",
-        "city": "Palm Harbor",
-        "address": "2699 Green Valley, Highland Lake,Fl",
-        "beds": "3",
-        "bathrooms": "2",
-        "area": "5x7"
-    },
-    {
-        "location": "India",
-        "price": "2508",
-        "property-type": "Houses",
-        "img": "http://4.bp.blogspot.com/-vO0XXtoTrqQ/UZZEw26zzmI/AAAAAAAAAsY/tUt0TedjTEk/s1600/1.png",
-        "city": "Palm Harbor",
-        "address": "2699 Green Valley, Highland Lake,Fl",
-        "beds": "3",
-        "bathrooms": "2",
-        "area": "5x7"
-    }
-]
+import dummy from "../../../data/dummy.json"
 
 const Filter = () => {
-    const [location, setLocation] = useState("India");
-    const [price, setPrice] = useState("500-2500");
-    const [propertyType, setPropertyType] = useState("Houses");
+    const [location, setLocation] = useState(null);
+    const [price, setPrice] = useState(null);
+    const [propertyType, setPropertyType] = useState(null);
     const [date, setDate] = useState(dayjs('2014-08-18T21:11:54'));
     const [data, setData] = useState(dummy)
 
@@ -104,17 +25,56 @@ const Filter = () => {
         console.log(newValue.$d);
     };
 
-    const handleChange = (event) => {
+    const handleLocationChange = (event) => {
         setLocation(event.target.value);
     };
 
     const handlePriceChange = (event) => {
+        console.log(event.target.value)
         setPrice(event.target.value);
+
     };
 
     const handlePropertyChange = (event) => {
         setPropertyType(event.target.value)
     }
+
+
+    const filterByLocation = () => {
+        if (location !== null) {
+            return dummy.filter(item => item.location === location)
+        }
+        return dummy;
+    }
+
+    const filterByPrice = (data) => {
+        if (price !== null) {
+            const rate1 = price.split("-")[0];
+            const rate2 = price.split("-")[1];
+            return data.filter(item => item.price >= rate1 && item.price <= rate2)
+        }
+        return data
+    }
+
+    const filterByProperty = (data) => {
+        if (propertyType !== null) {
+            return data.filter(item => item["property-type"] === propertyType)
+        }
+        return data
+    }
+
+
+
+    const handleFilter = () => {
+        const byLocation = filterByLocation();
+        console.log(byLocation)
+        const byPrice = filterByPrice(byLocation);
+        console.log(byPrice)
+        const byProperty = filterByProperty(byPrice)
+        console.log(byProperty)
+        setData(byProperty)
+    }
+
 
     return (
         <>
@@ -124,9 +84,12 @@ const Filter = () => {
                     <div className="selection">
                         <Select
                             value={location}
-                            onChange={handleChange}
+                            onChange={handleLocationChange}
                             className="select-container"
+                            displayEmpty
                         >
+
+                            <MenuItem value={null}><em>Clear</em></MenuItem>
                             <MenuItem value="India">India</MenuItem>
                             <MenuItem value="USA">USA</MenuItem>
                             <MenuItem value="China">China</MenuItem>
@@ -154,7 +117,10 @@ const Filter = () => {
                             value={price}
                             onChange={handlePriceChange}
                             className="select-container"
+                            displayEmpty
                         >
+
+                            <MenuItem value={null}><em>Clear</em></MenuItem>
                             <MenuItem value="500-2500">$500-2500</MenuItem>
                             <MenuItem value="2501-4500">$2500-4500</MenuItem>
                             <MenuItem value="4501-7000">$4500-7000</MenuItem>
@@ -168,7 +134,9 @@ const Filter = () => {
                             value={propertyType}
                             onChange={handlePropertyChange}
                             className="select-container"
+                            displayEmpty
                         >
+                            <MenuItem value={null}><em>Clear</em></MenuItem>
                             <MenuItem value="Houses">Houses</MenuItem>
                             <MenuItem value="Luxury">Luxury</MenuItem>
                             <MenuItem value="Apartment">Apartment</MenuItem>
@@ -176,20 +144,23 @@ const Filter = () => {
                     </div>
                 </div>
                 <div className="search-btn flex border width">
-                    <Button size="small" variant="contained" className="search">Search</Button>
+                    <Button size="small" variant="contained" className="search" onClick={handleFilter}>Search</Button>
                 </div>
             </div>
 
 
             <div className="filter-grid">
-
-                <Grid container spacing={8} paddingX="2rem">
-                    {data.map((item) => (
+                {data.length ? <Grid container spacing={8} paddingX="2rem">
+                    {data.map((item, index) => (
                         <Grid item xs={12} sm={6} md={4}>
-                            <Card item={item}/>
+                            <Card item={item} key={item.price + index} />
                         </Grid>
                     ))}
                 </Grid>
+                    : (<div  className="not-found">
+                        <h1>No results found😔</h1>
+                    </div>
+                    )}
 
             </div>
         </>
@@ -199,13 +170,3 @@ const Filter = () => {
 export default Filter
 
 
-
-
-// {
-//     "location":"India";
-//     "price":"$2508"
-//     "property-type":"Houses";
-//      "img":"http://4.bp.blogspot.com/-vO0XXtoTrqQ/UZZEw26zzmI/AAAAAAAAAsY/tUt0TedjTEk/s1600/1.png"
-//      "city":"";
-//      "address":""
-//   },
